@@ -1,7 +1,8 @@
 BINARY := remoteip
-VERSION := 2019-03-17
+VERSION := 2021-08-19
 SOURCES := main.go
 DEPS :=
+UNAME := $(shell uname -s)
 COMMIT_ID := $(shell git describe --tags --always)
 BUILD_TIME := $(shell go run -tags make main_make.go)
 LDFLAGS = -ldflags "-X main.VERSION=${VERSION} -X main.BUILD_DATE=${BUILD_TIME} -X main.COMMIT_ID=${COMMIT_ID} -s -w ${DFLAG}"
