@@ -1,8 +1,7 @@
 FROM golang:latest as builder
 
-RUN go get -d -u github.com/oddlid/remoteip
+COPY . ${GOPATH}/src/github.com/oddlid/remoteip/
 WORKDIR ${GOPATH}/src/github.com/oddlid/remoteip
-#RUN go get -d -v ./...
 RUN make
 
 FROM alpine:latest
