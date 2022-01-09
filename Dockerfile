@@ -6,9 +6,8 @@ RUN make
 
 FROM alpine:latest
 LABEL maintainer="Odd E. Ebbesen <oddebb@gmail.com>"
-RUN apk add --no-cache --update ca-certificates \
-		&& \
-		rm -rf /var/cache/apk/*
+RUN apk add --no-cache --update ca-certificates tzdata \
+		&& rm -rf /var/cache/apk/*
 
 RUN adduser -D -u 1000 srv
 COPY --from=builder /go/src/github.com/oddlid/remoteip/remoteip.bin /usr/local/bin/remoteip
